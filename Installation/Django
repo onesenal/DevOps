@@ -2,7 +2,9 @@ Ubuntu version : 20.04.5 LTS
 Django version : 4.1.4
 Python version : 3.8.10
 
-writer : Cho Guk Hwan
+plugin : 
+
+writer : Cho Gukhwan
 
 method : 
 sudo apt-get update
