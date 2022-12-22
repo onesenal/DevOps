@@ -1,0 +1,9 @@
+ubuntu version : Ubuntu 20.04.5 LTS
+docker version : docker 20.10.22
+plugin
+
+writer : Lee Seung Kyu
+
+method :
+apt-cache madison docker-ce
+sudo apt-get install docker-ce=5:20.10.22~3-0~ubuntu-focal docker-ce-cli=5:20.10.22~3-0~ubuntu-focal containerd.io
