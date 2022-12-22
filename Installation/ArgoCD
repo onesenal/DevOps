@@ -1,4 +1,8 @@
 Ubuntu version : 20.04.5 LTS
+git: 2.34.1
+Kubespray version: 2.18.1
+Vagrant version: 2.3.3
+ansible version: 2.12.10
 Argocd version : 2.4.4
 Argocd-server version: 2.5.4
 Plugin:
@@ -6,5 +10,72 @@ Plugin:
 writer : Park Changyoub
 
 method : 
+[ubuntu]
+rm -f ~/.ssh/known_hosts
+ssh vagrant@192.168.56.11, 21, 22, 23
+sudo vim /etc/ssh/sshd_config
+>  63 ChallengeResponseAuthentication yes
+sudo systemctl restart ssh.service
+
+[vagrant_control]
+git clone -b v2.18.1 https://github.com/kubernetes-sigs/kubespray
+cd kubespray
+
+[vagrant_control]
+ssh-keygen
+ssh-copy-id vagrant@localhots
+
+[vagrant_node01, 02, 03, 04]
+ssh-copy-id vagrant@192.168.56.21 ~ 23
+
+[vagrant_control]
+sudo apt-get update
+sudo apt-get install python3 python3-pip -y
+sudo pip3 install -r requirements.txt
+mkdir inventory/mycluster
+cp -rfp inventory/sample/ inventory/mycluster
+
+[vagrant_control]
+vim inventory/mycluster/inventory.ini
+> [all]
+> kube-control1   ansible_host=192.168.56.11      ip=192.168.56.11        ansible_connection=local
+> kube-node1      ansible_host=192.168.56.21      ip=192.168.56.21
+> kube-node2      ansible_host=192.168.56.22      ip=192.168.56.22
+> kube-node3      ansible_host=192.168.56.23      ip=192.168.56.23
+
+> [all:vars]
+> ansible_python_interpreter=/usr/bin/python3
+
+> [kube_control_plane]
+> kube-control1
+
+> [etcd]
+> kube-control1
+
+> [kube_node]
+> kube-node1
+> kube-node2
+> kube-node3
+vim inventory/mycluster/group_vars/k8s_cluster/addons.yml
+> 16  metrics_server_enabled: true
+> 93  ingress_nginx_enabled: true
+> 139  metallb_enabled: true
+> 141  metallb_ip_range:
+> 142     - "192.168.56.200-192.168.56.210"
+> 168  metallb_protocol: "layer2"
+vim inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml
+> 129 kube_proxy_strict_arp: true
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt update
+sudo apt install -y ansible 
+ansible all -i inventory/mycluster/inventory.ini -m ping
+ansible all -i inventory/mycluster/inventory.ini -m apt -a "update_cache=yes" --become
+ansible-playbook -i inventory/mycluster/inventory.ini cluster.yml --become
+cd ~
+mkdir ~/.kube
+sudo cp /etc/kubernetes/admin.conf ~/.kube/config
+sudo chown vagrant:vagrant ~/.kube/config
+ls -l ~/.kube/
+kubectl get nodes
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
