@@ -3,7 +3,7 @@ Argocd version : 2.4.4
 Argocd-server version: 2.5.4
 Plugin:
 
-writer : Park Chang youb
+writer : Park Changyoub
 
 method : 
 VERSION=v2.4.4; curl -sL -o argocd https://github.com/argoproj/argo-cd/releases/download/$VERSION/argocd-linux-amd64
