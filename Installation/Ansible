@@ -1,0 +1,14 @@
+ubuntu version : Ubuntu 20.04.5 LTS
+vagrant version : Ansible 2.12.10
+
+
+writer : Son Juwon
+
+Node requirement summary
+
+
+
+method : 
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt update
+sudo apt install ansible
