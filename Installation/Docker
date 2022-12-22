@@ -1,6 +1,6 @@
 ubuntu version : 20.04.5 LTS
 docker version : 20.10.22
-plugin
+plugin :
 
 writer : Lee Seung Kyu
 
