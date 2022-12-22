@@ -2,7 +2,7 @@ ubuntu version : 20.04.5 LTS
 docker version : 20.10.22
 plugin :
 
-writer : Lee Seung Kyu
+writer : Lee Seungkyu
 
 method :
 apt-cache madison docker-ce
