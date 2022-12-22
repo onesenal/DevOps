@@ -1,5 +1,5 @@
-ubuntu version : Ubuntu 20.04.5 LTS
-vagrant version : Vagrant 2.3.3
+Ubuntu version : 20.04.5 LTS
+Vagrant version : 2.3.3
 plugin
   -  vagrant-hostmanager
   -  vagrant-disksize
