@@ -2,7 +2,7 @@ Ubuntu version : 20.04.5 LTS
 git: 2.34.1
 Kubespray version: 2.18.1
 Vagrant version: 2.3.3
-ansible version: 2.12.10
+Ansible version: 2.12.10
 Argocd version : 2.4.4
 Argocd-server version: 2.5.4
 Plugin:
