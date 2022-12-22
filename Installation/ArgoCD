@@ -3,7 +3,7 @@ Argocd version : 2.4.4
 Argocd-server version: 2.5.4
 Plugin:
 
-writer : Park Chang youb
+writer : Park Changyoub
 
 method : 
 kubectl create namespace argocd
