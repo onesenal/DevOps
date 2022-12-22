@@ -1,5 +1,6 @@
-ubuntu version : Ubuntu 20.04.5 LTS
-vagrant version : Vagrant 2.3.3
+ubuntu version : 20.04.5 LTS
+argocd version : 2.4.4
+argocd-server version: 2.5.4
 plugin:
 
 writer : Park, Chang youb
