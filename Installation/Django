@@ -1,0 +1,10 @@
+ubuntu version : Ubuntu 20.04.5 LTS
+django version : Vagrant 4.1.4
+python version : Python 3.8.10
+
+writer : Cho Guk Hwan
+
+method : 
+sudo apt-get update
+sudo apt install python3-pip
+pip install django 
