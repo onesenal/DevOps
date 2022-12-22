@@ -1,0 +1,9 @@
+Ubuntu version : 20.04.5 LTS
+Wireshark version : 3.2.3
+plugin : 
+
+writer : Cho Gukhwan
+
+method : 
+sudo apt-get update
+sudo apt install wireshark
