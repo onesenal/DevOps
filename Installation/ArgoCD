@@ -6,11 +6,5 @@ Plugin:
 writer : Park Chang youb
 
 method : 
-1.install
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-
-2.argo CLI install
-VERSION=v2.4.4; curl -sL -o argocd https://github.com/argoproj/argo-cd/releases/download/$VERSION/argocd-linux-amd64
-chmod +x argocd
-sudo mv argocd /usr/local/bin/argocd
