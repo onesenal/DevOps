@@ -6,11 +6,20 @@ Ansible version: 2.12.10
 Argocd version : 2.4.4
 Argocd-server version: 2.5.4
 Plugin:
+  -  vagrant-hostmanager
+  -  vagrant-disksize
 
 writer : Park Changyoub
 
 method : 
 [ubuntu]
+https://developer.hashicorp.com/vagrant/downloads
+wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
+| sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install vagrant
+vagrant plugin install vagrant-hostmanager
+vagrant plugin install vagrant-disksize
 rm -f ~/.ssh/known_hosts
 ssh vagrant@192.168.56.11, 21, 22, 23
 sudo vim /etc/ssh/sshd_config
