@@ -32,7 +32,7 @@ cd kubespray
 
 [vagrant_control]
 ssh-keygen
-ssh-copy-id vagrant@localhots
+ssh-copy-id vagrant@localhost
 
 [vagrant_node01, 02, 03, 04]
 ssh-copy-id vagrant@192.168.56.21 ~ 23
