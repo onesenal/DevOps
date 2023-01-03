@@ -1,0 +1,19 @@
+Ubuntu version : 20.04.5 LTS
+Virtualenv version : 20.17.1
+Django version : 4.1.4
+Python version : 3.8.10
+
+plugin : 
+
+writer : Cho Gukhwan
+
+method : 
+sudo apt-get update
+sudo apt install python3-pip
+pip install django 
+mkdir example
+cd example
+python3 -m venv example-site
+sudo pip3 install virtualenv
+virtualenv --python=python3 django
+source example/bin/activate
