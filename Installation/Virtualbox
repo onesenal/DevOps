@@ -1,0 +1,11 @@
+Ubuntu version : 20.04.5 LTS
+Virtualbox version : 6.1.38
+plugin
+  -  vagrant-hostmanager
+  -  vagrant-disksize
+
+writer : Cho Guk Hwan
+
+method : 
+sudo apt install virtualbox -y 
+sudo apt install virtualbox-ext-pack -y
