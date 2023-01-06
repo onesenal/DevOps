@@ -1,16 +1,13 @@
 Ubuntu version : 20.04.5 LTS
 Vagrant version : 2.3.3
 plugin
-  -  vagrant-hostmanager
-  -  vagrant-disksize
 
 writer : Cho Guk Hwan
 
 method : 
-https://developer.hashicorp.com/vagrant/downloads
-wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
-| sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo apt update && sudo apt install vagrant
-vagrant plugin install vagrant-hostmanager
-vagrant plugin install vagrant-disksize
+sudo apt update
+sudo apt install virtualbox
+curl -O https://releases.hashicorp.com/vagrant/2.2.9/vagrant_2.2.9_x86_64.deb
+sudo apt install ./vagrant_2.2.9_x86_64.debsudo apt update && sudo apt install vagrant
+vagrant --version
+vagrant init
