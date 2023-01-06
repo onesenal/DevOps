@@ -7,5 +7,6 @@ plugin
 writer : Cho Guk Hwan
 
 method : 
+sudo apt-get update
 sudo apt install virtualbox -y 
 sudo apt install virtualbox-ext-pack -y
