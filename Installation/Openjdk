@@ -1,0 +1,10 @@
+Ubuntu version : 20.04.5 LTS
+Openjdk version : 11.0.17
+plugin
+
+writer : Cho Guk Hwan
+
+method : 
+sudo apt-get update
+sudo apt install openjdk-11-jre
+java -version
