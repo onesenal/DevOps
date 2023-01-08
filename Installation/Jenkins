@@ -1,0 +1,14 @@
+Ubuntu version : 20.04.5 LTS
+Jenkins version : 2.375.1
+plugin
+
+writer : Cho Guk Hwan
+
+method : 
+sudo apt-get update
+sudo apt install openjdk-11-jre
+java -version
+curl -fsSL <https://pkg.jenkins.io/debian-stable/jenkins.io.key> | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] <https://pkg.jenkins.io/debian-stable> binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get install jenkins
+jenkins --version
