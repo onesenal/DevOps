@@ -1,5 +1,7 @@
 Ubuntu version : 20.04.5 LTS
 Jenkins version : 2.375.1
+Openjdk version : 11.0.17
+
 plugin
 
 writer : Cho Guk Hwan
