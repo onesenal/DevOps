@@ -1,0 +1,20 @@
+Ubuntu version : 20.04.5 LTS
+Postgresql version : 13
+
+plugin
+
+writer : Cho Guk Hwan
+
+method : 
+wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O- | sudo apt-key add -
+echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt/ focal-pgdg main" | sudo tee /etc/apt/sources.list.d/postgresql.list
+sudo apt update
+sudo apt install postgresql-13
+sudo systemctl status postgresql
+sudo passwd postgres
+su - postgres
+createuser sonar
+psql
+ALTER USER sonar WITH ENCRYPTED password 'sonar';
+\q
+exit
