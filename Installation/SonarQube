@@ -1,0 +1,63 @@
+Ubuntu version : 20.04.5 LTS
+SonarQube version : 8.9.10.61524
+Openjdk version : 11.0.17
+
+plugin
+
+writer : Cho Guk Hwan
+
+method : 
+sudo apt update
+sudo apt install openjdk-11-jdk
+vim ~/.bashrc
+export ES_JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export PATH="$PATH:$ESJAVA_HOME/bin”
+source ~/.bashrc   
+echo $ES_JAVA_HOME
+sudo vim /etc/sysctl.conf
+	vm.max_map_count=262144
+	fs.file-max=65536
+	ulimit -n 65536
+	ulimit -u 4096
+sudo reboot
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.10.61524.zip
+sudo apt -y install unzip
+sudo unzip sonarqube-*.zip -d /opt
+cat /etc/hosts
+sudo vim /etc/hostname
+# hostname 일치
+sudo hostnamectl set-hostname [hostname]
+sudo mv /opt/sonarqube-* /opt/sonarqube
+sudo vim /etc/systemd/system/sonar.service
+	[Unit]
+	Description=SonarQube service
+	After=syslog.target network.target
+
+	[Service]
+	Type=forking
+	ExecStart=/opt/sonarqube/bin/linux-x86-64/sonar.sh start
+	ExecStop=/opt/sonarqube/bin/linux-x86-64/sonar.sh stop
+	LimitNOFILE=65536
+	LimitNPROC=4096
+	User=sonar
+	Group=sonar
+	Restart=on-failure
+
+	[Install]
+	WantedBy=multi-user.target
+sudo adduser --system --no-create-home --group --disabled-login sonar
+sudo chown -R sonar:sonar /opt/sonarqube
+sudo systemctl daemon-reload
+sudo systemctl enable sonar 
+sudo systemctl start sonar 
+sudo systemctl status sonar
+sudo -Hu sonar /opt/sonarqube/bin/linux-x86-64/sonar.sh status
+sudo -Hu sonar /opt/sonarqube/bin/linux-x86-64/sonar.sh start
+sudo -Hu sonar /opt/sonarqube/bin/linux-x86-64/sonar.sh stop
+# sudo ufw allow 9000/tcp
+# [Option]데이터베이스 연동
+sudo vim /opt/sonarqube/conf/sonar.properties
+	sonar.jdbc.username=sonar
+	sonar.jdbc.password=sonar
+	sonar.jdbc.url=jdbc:postgresql://localhost/sonardb
+	sonar.web.javaAdditionalOpts=-server
