@@ -1,0 +1,47 @@
+Ubuntu version : 20.04.5 LTS
+Anchore version : 1.1.0
+Anchore-cli, version 0.9.4
+plug in :
+
+
+writer : Son Juwon
+
+install requirement 
+ansible-core Version 2.11 Control node Python 2.7~3.9 Managed node Python 2.6~3.9
+
+
+method : 
+curl https://engine.anchore.io/docs/quickstart/docker-compose.yaml > docker-compose.yaml
+docker-compose up -d
+git clone https://github.com/anchore/anchore-cli
+cd anchore-cli
+pip install --user --upgrade .
+apt-get update
+apt-get install python-pip
+pip install anchorecli
+export PATH="$HOME/.local/bin/:$PATH"
+ANCHORE_CLI_URL=http://localhost:8228/v1
+ANCHORE_CLI_USER=admin
+ANCHORE_CLI_PASS=foobar
+export ANCHORE_CLI_URL
+export ANCHORE_CLI_USER
+export ANCHORE_CLI_PASS
+echo 'export PATH=$PATH:~/.local/bin'| tee -a ~/.bashrc
+source ~/.profile
+anchore-cli --version
+cd ~/anchore
+docker compose exec api anchore-cli system status
+anchore-cli image add docker.io/library/debian:latest
+anchore-cli image wait docker.io/library/debian:latest
+anchore-cli image list
+anchore-cli image get docker.io/library/debian:latest
+anchore-cli image vuln docker.io/library/debian:latest os
+anchore-cli evaluate check docker.io/library/debian:latest --detail
+anchore-cli image content docker.io/library/debian:latest os
+anchore-cli subscription activate vuln_update docker.io/library/debian:latest
+anchore-cli --version
+anchore-cli, version 0.9.4
+
+
+
+
