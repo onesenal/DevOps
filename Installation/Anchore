@@ -4,7 +4,7 @@ Anchore-cli, version 0.9.4
 plug in :
 
 
-writer : Son Juwon
+writer : Cho Gukhwan
 
 install requirement 
 ansible-core Version 2.11 Control node Python 2.7~3.9 Managed node Python 2.6~3.9
