@@ -1,0 +1,10 @@
+ubuntu version : 20.04.5 LTS
+docker version : 20.10.22
+Rancher version : 2.7.0
+
+plugin :
+
+writer : Cho Gukhwan
+
+method :
+sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher
